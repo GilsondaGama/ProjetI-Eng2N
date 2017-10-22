@@ -29,8 +29,8 @@ public class DaoMaes {
             pst.setString(3, mod.getComplemento());
             pst.setString(4, mod.getBairro());
             pst.setString(5, mod.getCidade());
-            pst.setString(6, mod.getEstado());           
-            pst.setString(7, mod.getNascimento());
+            pst.setString(6, mod.getEstado()); 
+            pst.setDate(7, new java.sql.Date(mod.getNascimento().getTime()));            
             pst.setString(8, mod.getCpf());
             pst.setString(9, mod.getRg());
             pst.setString(10, mod.getContato1());

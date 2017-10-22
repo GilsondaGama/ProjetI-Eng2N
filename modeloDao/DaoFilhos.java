@@ -10,30 +10,36 @@ import modeloBeans.BeansFilhos;
 
 public class DaoFilhos {
         
-    ConexaoBD conex = new ConexaoBD();
     BeansFilhos mod = new BeansFilhos();
-    
+    ConexaoBD conex = new ConexaoBD();
+    ConexaoBD conexMaes = new ConexaoBD();
+
+      
     public void salvar(BeansFilhos mod) {    
         conex.conexao();           
+        
         String sql = "";
                   
         if(mod.getId() == 0) {
-            sql = "INSERT INTO MAE (nome, endereco, complemento, bairro, cidade, estado, nascimento, cpf, rg, contato1, contato2, filhos) values (?,?,?,?,?,?,?,?,?,?,?,?)";      
+            sql = "INSERT INTO FILHO (nome, idMae, responsavel, endereco, complemento, bairro, cidade, estado, nascimento, sexo, contato1) values (?,?,?,?,?,?,?,?,?,?,?)";
         } else {
-            sql = "UPDATE MAE SET nome=?, endereco=?, complemento=?, bairro=?, cidade=?, estado=?, nascimento=?, cpf=?, rg=?, contato1=?, contato2=?, filhos=? WHERE id=?";                          
+//            sql = "UPDATE FILHO SET nome=?, endereco=?, complemento=?, bairro=?, cidade=?, estado=?, nascimento=?, cpf=?, rg=?, contato1=?, contato2=?, filhos=? WHERE id=?";                          
         }
         try {            
             PreparedStatement pst = conex.con.prepareStatement(sql);
             pst.setString(1, mod.getNome());
-            pst.setString(2, mod.getEndereco());
-            pst.setString(3, mod.getComplemento());
-            pst.setString(4, mod.getBairro());
-            pst.setString(5, mod.getCidade());
-            pst.setString(6, mod.getEstado());           
-            pst.setString(7, mod.getNascimento());
-            pst.setString(10, mod.getContato1());
+            pst.setInt(2,mod.getIdMae());           
+            pst.setString(3, mod.getResponsavel());
+            pst.setString(4, mod.getEndereco());
+            pst.setString(5, mod.getComplemento());
+            pst.setString(6, mod.getBairro());
+            pst.setString(7, mod.getCidade());
+            pst.setString(8, mod.getEstado());                     
+            pst.setDate(9, new java.sql.Date(mod.getNascimento().getTime()));
+            pst.setString(10, mod.getSexo());
+            pst.setString(11, mod.getContato1());
             if(mod.getId() != 0) {
-                pst.setInt(13, mod.getId());     // Pega o Id para a alteração
+                pst.setInt(12, mod.getId());     // Pega o Id para a alteração
             }
             pst.execute();
         } catch (SQLException e) {
