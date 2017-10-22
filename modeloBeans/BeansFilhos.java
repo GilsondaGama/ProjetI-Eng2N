@@ -1,19 +1,22 @@
 
 package modeloBeans;
 
+import java.util.Date;
+
 public class BeansFilhos {
 
 
     private int id;
     private String nome;
     private int idMae;
+
     private String responsavel;
     private String endereco;
     private String complemento;
     private String bairro;
     private String cidade;
     private String estado;
-    private String nascimento;
+    private Date nascimento;
     private String sexo;
     private String contato1;
 
@@ -89,14 +92,6 @@ public class BeansFilhos {
         this.estado = estado;
     }
 
-    public String getNascimento() {
-        return nascimento;
-    }
-
-    public void setNascimento(String nascimento) {
-        this.nascimento = nascimento;
-    }
-
     public String getSexo() {
         return sexo;
     }
@@ -112,6 +107,14 @@ public class BeansFilhos {
     public void setContato1(String contato1) {
         this.contato1 = contato1;
     } 
+
+    public Date getNascimento() {
+        return nascimento;
+    }
+
+    public void setNascimento(Date nascimento) {
+        this.nascimento = nascimento;
+    }
     
- 
+
 }
