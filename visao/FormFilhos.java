@@ -15,9 +15,11 @@ public class FormFilhos extends javax.swing.JFrame {
     DaoFilhos control = new DaoFilhos();
     ConexaoBD conex = new ConexaoBD();
        
+    String sqlFilho = "SELECT filho.id, filho.nome, mae.nome, responsavel FROM filho INNER JOIN mae ON filho.idMae = mae.id ORDER BY filho .nome";
     public FormFilhos() {
         initComponents();
-        preencherTabela("SELECT id, nome, idMae, responsavel FROM Filho ORDER BY nome");
+        preencherTabela(sqlFilho);
+        preencherMaes();
     }
 
     @SuppressWarnings("unchecked")
@@ -35,19 +37,21 @@ public class FormFilhos extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabelId = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jTextFieldNome = new javax.swing.JTextField();
+        jComboBoxMaes = new javax.swing.JComboBox<>();
         jTextFieldResponsavel = new javax.swing.JTextField();
         jTextFieldEndereco = new javax.swing.JTextField();
         jTextFieldComplemento = new javax.swing.JTextField();
         jTextFieldBairro = new javax.swing.JTextField();
         jTextFieldCidade = new javax.swing.JTextField();
         jTextFieldId = new javax.swing.JTextField();
-        jFormattedTextFieldNascimento = new javax.swing.JFormattedTextField();
         jTextFieldEstado = new javax.swing.JFormattedTextField();
+        jComboBoxSexo = new javax.swing.JComboBox<>();
         jTextFieldContato1 = new javax.swing.JFormattedTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        jDateChooserNascimento = new com.toedter.calendar.JDateChooser();
         jPanel2 = new javax.swing.JPanel();
         rjButtonEditar = new javax.swing.JButton();
         rjButtonIncluir = new javax.swing.JButton();
@@ -91,7 +95,15 @@ public class FormFilhos extends javax.swing.JFrame {
 
         jLabelId.setText("Código");
 
+        jLabel1.setText("Sexo:");
+
+        jLabel3.setText("Mãe:");
+
+        jLabel4.setText("Responsável:");
+
         jTextFieldNome.setEnabled(false);
+
+        jComboBoxMaes.setEnabled(false);
 
         jTextFieldResponsavel.setEnabled(false);
 
@@ -106,18 +118,14 @@ public class FormFilhos extends javax.swing.JFrame {
         jTextFieldId.setEnabled(false);
 
         try {
-            jFormattedTextFieldNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        jFormattedTextFieldNascimento.setEnabled(false);
-
-        try {
             jTextFieldEstado.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("UU")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
         jTextFieldEstado.setEnabled(false);
+
+        jComboBoxSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Feminino" }));
+        jComboBoxSexo.setEnabled(false);
 
         try {
             jTextFieldContato1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) ####-####")));
@@ -126,11 +134,7 @@ public class FormFilhos extends javax.swing.JFrame {
         }
         jTextFieldContato1.setEnabled(false);
 
-        jLabel1.setText("Sexo:");
-
-        jLabel3.setText("Mãe:");
-
-        jLabel4.setText("Responsável:");
+        jDateChooserNascimento.setEnabled(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -168,11 +172,13 @@ public class FormFilhos extends javax.swing.JFrame {
                                 .addComponent(jTextFieldEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jComboBoxSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(88, 88, 88)
                                 .addComponent(jLabel8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jFormattedTextFieldNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(81, 81, 81)
+                                .addComponent(jDateChooserNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jTextFieldContato1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -183,10 +189,12 @@ public class FormFilhos extends javax.swing.JFrame {
                                 .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jComboBoxMaes, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextFieldResponsavel, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jTextFieldResponsavel, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(38, 38, 38))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -202,14 +210,15 @@ public class FormFilhos extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldResponsavel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
-                    .addComponent(jLabel3))
+                    .addComponent(jLabel3)
+                    .addComponent(jComboBoxMaes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jTextFieldEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12)
                     .addComponent(jTextFieldComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel6)
@@ -221,14 +230,16 @@ public class FormFilhos extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel13)
                             .addComponent(jTextFieldEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(jTextFieldContato1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8)
-                    .addComponent(jFormattedTextFieldNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel9)
+                        .addComponent(jTextFieldContato1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel8)
+                        .addComponent(jLabel1)
+                        .addComponent(jComboBoxSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jDateChooserNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -359,13 +370,13 @@ public class FormFilhos extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel15)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextFieldPesquisa)
-                .addContainerGap())
+                .addComponent(jTextFieldPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 675, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(19, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
                     .addComponent(jTextFieldPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -397,11 +408,13 @@ public class FormFilhos extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
         );
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Foto2.jpg"))); // NOI18N
@@ -424,9 +437,9 @@ public class FormFilhos extends javax.swing.JFrame {
                                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 766, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel11)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 4, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -434,18 +447,18 @@ public class FormFilhos extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         setSize(new java.awt.Dimension(1200, 571));
@@ -453,31 +466,74 @@ public class FormFilhos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
         
+    public void preencherMaes() {
+        conex.conexao();
+        conex.executaSql("SELECT nome FROM mae ORDER BY nome");
+        jComboBoxMaes.removeAllItems();
+        try {
+            conex.rs.first();
+            do {
+                jComboBoxMaes.addItem(conex.rs.getString("nome"));
+            } while(conex.rs.next());
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao preencher o campo Mãe!"+ex);
+        }
+        conex.desconecta();
+    }
+    
+    public int codMaes;
+    public String nomeMaes;
+    public void BuscaMae(String nomeMae) {
+        conex.conexao();      
+        conex.executaSql("SELECT * FROM mae WHERE nome ='"+nomeMae+"'");
+        try {
+            conex.rs.first();
+            codMaes = conex.rs.getInt("mae.id");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Não encontrada!"+ex);
+        } 
+        conex.desconecta();
+    }
+
+    public void BuscaCodMae(int codMae) {
+        conex.conexao();      
+        conex.executaSql("SELECT * FROM mae WHERE id ='"+codMae+"'");
+        try {
+            conex.rs.first();
+            nomeMaes = conex.rs.getString("mae.nome");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Não encontrada!"+ex);
+        } 
+        conex.desconecta();
+    }
+    
     private void limpaCampos() {
         jTextFieldId.setText("0");
-        jTextFieldNome.setText("");
+        jTextFieldNome.setText(""); 
+        jComboBoxMaes.setName(null);
         jTextFieldResponsavel.setText("");
         jTextFieldEndereco.setText("");
         jTextFieldComplemento.setText("");
         jTextFieldBairro.setText("");
         jTextFieldCidade.setText("");
         jTextFieldEstado.setText("");
-        jFormattedTextFieldNascimento.setText("");
+        jComboBoxSexo.setName(null); 
+        jDateChooserNascimento.setDate(null);
         jTextFieldContato1.setText("");
     }        
     
     private void camposEnable(boolean tf) {
         jTextFieldNome.setEnabled(tf);
+        jComboBoxMaes.setEnabled(tf);
         jTextFieldResponsavel.setEnabled(tf);
         jTextFieldEndereco.setEnabled(tf);
         jTextFieldComplemento.setEnabled(tf);
         jTextFieldBairro.setEnabled(tf);
         jTextFieldCidade.setEnabled(tf);
         jTextFieldEstado.setEnabled(tf);
-        jFormattedTextFieldNascimento.setEnabled(tf);
-        jTextFieldContato1.setEnabled(tf);
-        
-
+        jDateChooserNascimento.setEnabled(tf);
+        jComboBoxSexo.setEnabled(tf);
+        jTextFieldContato1.setEnabled(tf);   
     }
     
     private void botoesEnable(boolean a,boolean b,boolean c,boolean d,boolean e,boolean f) {
@@ -500,12 +556,11 @@ public class FormFilhos extends javax.swing.JFrame {
     }//GEN-LAST:event_rjButtonEditarActionPerformed
 
     private void rjButtonPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rjButtonPesquisaActionPerformed
-        preencherTabela("SELECT id, idMae, responsavel FROM filho WHERE nome LIKE '%"+jTextFieldPesquisa.getText()+"%'  ORDER BY nome");
+        preencherTabela("SELECT filho.id, filho.nome, mae.nome, responsavel FROM filho INNER JOIN mae ON filho.idMae = mae.id WHERE filho.nome LIKE '%"+jTextFieldPesquisa.getText()+"%' ORDER BY filho.nome");        
         botoesEnable(true, false, false, false, false, true);
     }//GEN-LAST:event_rjButtonPesquisaActionPerformed
 
     private void rjButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rjButtonExcluirActionPerformed
-
         int resposta = 0;
         resposta = JOptionPane.showConfirmDialog(rootPane, "Deseja realmente Excluir?");
         if (resposta == JOptionPane.YES_OPTION){
@@ -514,7 +569,7 @@ public class FormFilhos extends javax.swing.JFrame {
         }                               
         limpaCampos();
         botoesEnable(true, false, false, false, false, true);
-        preencherTabela("SELECT id, idMae, responsavel FROM filho ORDER BY nome");
+        preencherTabela(sqlFilho);
     }//GEN-LAST:event_rjButtonExcluirActionPerformed
 
     private void rjButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rjButtonSalvarActionPerformed
@@ -522,22 +577,26 @@ public class FormFilhos extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Preencha o campo Nome para continuar!");
             jTextFieldNome.requestFocus();
         }
+        BuscaMae((String) jComboBoxMaes.getSelectedItem()); 
+        
         mod.setId(Integer.parseInt(jTextFieldId.getText()));
-        mod.setNome(jTextFieldNome.getText());
+        mod.setNome(jTextFieldNome.getText());      
+        mod.setIdMae(codMaes);
+        mod.setResponsavel(jTextFieldResponsavel.getText());
         mod.setEndereco(jTextFieldEndereco.getText());
         mod.setComplemento(jTextFieldComplemento.getText());
         mod.setBairro(jTextFieldBairro.getText());
         mod.setCidade(jTextFieldCidade.getText());
         mod.setEstado(jTextFieldEstado.getText());     
-        mod.setNascimento(jFormattedTextFieldNascimento.getText());
+        mod.setNascimento(jDateChooserNascimento.getDate());                                  
+        mod.setSexo((String) jComboBoxSexo.getSelectedItem())        ;
         mod.setContato1(jTextFieldContato1.getText());
-   
-        
+           
         control.salvar(mod);
         camposEnable(false);
         botoesEnable(true, false, false, false, false, true);   
         limpaCampos();
-        preencherTabela("SELECT id, idMae, responsavel FROM filho ORDER BY nome");
+        preencherTabela(sqlFilho);
     }//GEN-LAST:event_rjButtonSalvarActionPerformed
 
     private void rjButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rjButtonCancelarActionPerformed
@@ -549,9 +608,11 @@ public class FormFilhos extends javax.swing.JFrame {
     private void rjButtonIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rjButtonIncluirActionPerformed
         limpaCampos();
         camposEnable(true);
+        preencherTabela(sqlFilho);
+        preencherMaes();
+        botoesEnable(false, false, true, true, false, false);              
         jTextFieldNome.requestFocus();
         
-        botoesEnable(false, false, true, true, false, false);              
     }//GEN-LAST:event_rjButtonIncluirActionPerformed
 
     private void jTableFilhosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableFilhosMouseClicked
@@ -561,16 +622,20 @@ public class FormFilhos extends javax.swing.JFrame {
         try {
             conex.rs.first();                       
             jTextFieldId.setText(conex.rs.getString("Id"));
-            jTextFieldNome.setText(conex.rs.getString("nome"));
+            jTextFieldNome.setText(conex.rs.getString("nome"));            
             jTextFieldResponsavel.setText(conex.rs.getString("responsavel"));
-            
             jTextFieldEndereco.setText(conex.rs.getString("endereco"));
             jTextFieldComplemento.setText(conex.rs.getString("complemento"));
             jTextFieldBairro.setText(conex.rs.getString("bairro"));
             jTextFieldCidade.setText(conex.rs.getString("cidade"));
             jTextFieldEstado.setText(conex.rs.getString("estado"));
-            jFormattedTextFieldNascimento.setText(conex.rs.getString("nascimento"));
+            jComboBoxSexo.setName(conex.rs.getString("sexo"));
+            jDateChooserNascimento.setDate(conex.rs.getDate("nascimento"));
             jTextFieldContato1.setText(conex.rs.getString("contato1"));
+            
+            BuscaCodMae(conex.rs.getInt("idMae"));
+            jComboBoxMaes.setName(nomeMaes);
+            
                                 
         } catch (SQLException ex) {           
             JOptionPane.showMessageDialog(rootPane, "Erro ao selecionar os dados \n"+ex);          
@@ -582,13 +647,13 @@ public class FormFilhos extends javax.swing.JFrame {
      
     public void preencherTabela(String sql) {
         ArrayList dados = new ArrayList();
-        String [] colunas = new String []{"id", "nome", "idMae", "responsavel"}; 
+        String [] colunas = new String []{"Código", "Nome", "Nome da Mãe", "Responsável"}; 
         conex.conexao();       
         conex.executaSql(sql);                
         try {
             conex.rs.first();
             do {
-                dados.add(new Object[]{conex.rs.getInt("id"), conex.rs.getString("nome"), conex.rs.getString("idMae"), conex.rs.getString("responsavel")});
+                dados.add(new Object[]{conex.rs.getInt("id"), conex.rs.getString("nome"), conex.rs.getString("mae.nome"), conex.rs.getString("responsavel")});
             } while(conex.rs.next());            
         } catch (SQLException ex) {
             // JOptionPane.showMessageDialog(rootPane, "Erro ao preencher ArrayList \n"+ex);          
@@ -597,19 +662,18 @@ public class FormFilhos extends javax.swing.JFrame {
         jTableFilhos.setModel(modelo);
         jTableFilhos.getColumnModel().getColumn(0).setPreferredWidth(60);
         jTableFilhos.getColumnModel().getColumn(0).setResizable(false);
-        jTableFilhos.getColumnModel().getColumn(1).setPreferredWidth(400);
+        jTableFilhos.getColumnModel().getColumn(1).setPreferredWidth(330);
         jTableFilhos.getColumnModel().getColumn(1).setResizable(false);
-        jTableFilhos.getColumnModel().getColumn(2).setPreferredWidth(330);
+        jTableFilhos.getColumnModel().getColumn(2).setPreferredWidth(300);
         jTableFilhos.getColumnModel().getColumn(2).setResizable(false);
-        jTableFilhos.getColumnModel().getColumn(3).setPreferredWidth(140);
+        jTableFilhos.getColumnModel().getColumn(3).setPreferredWidth(250);
         jTableFilhos.getColumnModel().getColumn(3).setResizable(false);
         jTableFilhos.getTableHeader().setReorderingAllowed(false);
         jTableFilhos.setAutoResizeMode(jTableFilhos.AUTO_RESIZE_OFF);       
         jTableFilhos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);        
         conex.desconecta();
     }
-    
-    
+      
      
     public static void main(String args[]) {
         /* Create and display the form */
@@ -621,7 +685,9 @@ public class FormFilhos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JFormattedTextField jFormattedTextFieldNascimento;
+    private javax.swing.JComboBox<String> jComboBoxMaes;
+    private javax.swing.JComboBox<String> jComboBoxSexo;
+    private com.toedter.calendar.JDateChooser jDateChooserNascimento;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

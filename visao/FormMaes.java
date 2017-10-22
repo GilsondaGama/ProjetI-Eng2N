@@ -48,10 +48,10 @@ public class FormMaes extends javax.swing.JFrame {
         jTextFieldRG = new javax.swing.JTextField();
         jTextFieldFilhos = new javax.swing.JTextField();
         jTextFieldId = new javax.swing.JTextField();
-        jFormattedTextFieldNascimento = new javax.swing.JFormattedTextField();
         jTextFieldEstado = new javax.swing.JFormattedTextField();
         jTextFieldContato1 = new javax.swing.JFormattedTextField();
         jTextFieldContato2 = new javax.swing.JFormattedTextField();
+        jDateChooserNascimento = new com.toedter.calendar.JDateChooser();
         jPanel2 = new javax.swing.JPanel();
         rjButtonEditar = new javax.swing.JButton();
         rjButtonIncluir = new javax.swing.JButton();
@@ -127,13 +127,6 @@ public class FormMaes extends javax.swing.JFrame {
         jTextFieldId.setEnabled(false);
 
         try {
-            jFormattedTextFieldNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        jFormattedTextFieldNascimento.setEnabled(false);
-
-        try {
             jTextFieldEstado.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("UU")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
@@ -153,6 +146,8 @@ public class FormMaes extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         jTextFieldContato2.setEnabled(false);
+
+        jDateChooserNascimento.setEnabled(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -193,14 +188,16 @@ public class FormMaes extends javax.swing.JFrame {
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel8)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jFormattedTextFieldNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(jDateChooserNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel4)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGap(34, 34, 34)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jFormattedTextFieldCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jLabel4)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jFormattedTextFieldCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addComponent(jLabel10)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -262,13 +259,11 @@ public class FormMaes extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel8)
-                                .addComponent(jFormattedTextFieldNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel8)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jTextFieldRG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel4)))
+                                .addComponent(jLabel3))
+                            .addComponent(jDateChooserNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel9)
@@ -276,7 +271,9 @@ public class FormMaes extends javax.swing.JFrame {
                             .addComponent(jTextFieldFilhos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextFieldContato1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jFormattedTextFieldCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jFormattedTextFieldCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel10)
@@ -514,7 +511,7 @@ public class FormMaes extends javax.swing.JFrame {
         jTextFieldBairro.setText("");
         jTextFieldCidade.setText("");
         jTextFieldEstado.setText("");
-        jFormattedTextFieldNascimento.setText("");
+        jDateChooserNascimento.setDate(null);
         jFormattedTextFieldCPF.setText("");
         jTextFieldRG.setText("");   
         jTextFieldContato1.setText("");
@@ -529,7 +526,7 @@ public class FormMaes extends javax.swing.JFrame {
         jTextFieldBairro.setEnabled(tf);
         jTextFieldCidade.setEnabled(tf);
         jTextFieldEstado.setEnabled(tf);
-        jFormattedTextFieldNascimento.setEnabled(tf);
+        jDateChooserNascimento.setEnabled(tf);
         jFormattedTextFieldCPF.setEnabled(tf);
         jTextFieldRG.setEnabled(tf);      
         jTextFieldContato1.setEnabled(tf);
@@ -585,8 +582,8 @@ public class FormMaes extends javax.swing.JFrame {
         mod.setComplemento(jTextFieldComplemento.getText());
         mod.setBairro(jTextFieldBairro.getText());
         mod.setCidade(jTextFieldCidade.getText());
-        mod.setEstado(jTextFieldEstado.getText());     
-        mod.setNascimento(jFormattedTextFieldNascimento.getText());
+        mod.setEstado(jTextFieldEstado.getText());   
+        mod.setNascimento(jDateChooserNascimento.getDate());                 
         mod.setCpf(jFormattedTextFieldCPF.getText()); 
         mod.setRg(jTextFieldRG.getText());
         mod.setContato1(jTextFieldContato1.getText());
@@ -627,7 +624,7 @@ public class FormMaes extends javax.swing.JFrame {
             jTextFieldBairro.setText(conex.rs.getString("bairro"));
             jTextFieldCidade.setText(conex.rs.getString("cidade"));
             jTextFieldEstado.setText(conex.rs.getString("estado"));
-            jFormattedTextFieldNascimento.setText(conex.rs.getString("nascimento"));
+            jDateChooserNascimento.setDate(conex.rs.getDate("nascimento"));
             jFormattedTextFieldCPF.setText(conex.rs.getString("cpf"));
             jTextFieldRG.setText(conex.rs.getString("rg"));
             jTextFieldContato1.setText(conex.rs.getString("contato1"));
@@ -643,7 +640,7 @@ public class FormMaes extends javax.swing.JFrame {
      
     public void preencherTabela(String sql) {
         ArrayList dados = new ArrayList();
-        String [] colunas = new String []{"id", "nome", "endereco", "contato1"}; 
+        String [] colunas = new String []{"Código", "Nome", "Endereço", "Número de Contato"}; 
         conex.conexao();       
         conex.executaSql(sql);                
         try {
@@ -682,8 +679,8 @@ public class FormMaes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.toedter.calendar.JDateChooser jDateChooserNascimento;
     private javax.swing.JFormattedTextField jFormattedTextFieldCPF;
-    private javax.swing.JFormattedTextField jFormattedTextFieldNascimento;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

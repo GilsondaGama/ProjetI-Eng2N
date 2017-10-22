@@ -134,7 +134,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButtonMenu2);
-        jButtonMenu2.setBounds(197, 70, 200, 500);
+        jButtonMenu2.setBounds(200, 70, 200, 500);
 
         jMenuCadastros.setText("Cadastros");
 
