@@ -583,7 +583,7 @@ public class FormMaes extends javax.swing.JFrame {
         mod.setBairro(jTextFieldBairro.getText());
         mod.setCidade(jTextFieldCidade.getText());
         mod.setEstado(jTextFieldEstado.getText());   
-        mod.setNascimento(jDateChooserNascimento.getDate());                 
+        mod.setNascimento(jDateChooserNascimento.getDate());          
         mod.setCpf(jFormattedTextFieldCPF.getText()); 
         mod.setRg(jTextFieldRG.getText());
         mod.setContato1(jTextFieldContato1.getText());

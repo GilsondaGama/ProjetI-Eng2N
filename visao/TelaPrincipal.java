@@ -22,7 +22,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jLabelFoto03 = new javax.swing.JLabel();
         jLogo2 = new javax.swing.JButton();
-        jLabelFoto04 = new javax.swing.JLabel();
         jLabelFoto05 = new javax.swing.JLabel();
         jButtonMenu1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -32,6 +31,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         JButtonSair = new javax.swing.JButton();
         jButtonMenu2 = new javax.swing.JButton();
+        jButtonMenu4 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuCadastros = new javax.swing.JMenu();
         jMenuItemCadMae = new javax.swing.JMenuItem();
@@ -70,10 +70,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         getContentPane().add(jLogo2);
         jLogo2.setBounds(10, 10, 220, 30);
-
-        jLabelFoto04.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Foto4.jpg"))); // NOI18N
-        getContentPane().add(jLabelFoto04);
-        jLabelFoto04.setBounds(600, 70, 200, 500);
 
         jLabelFoto05.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Foto5.jpg"))); // NOI18N
         getContentPane().add(jLabelFoto05);
@@ -135,6 +131,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         getContentPane().add(jButtonMenu2);
         jButtonMenu2.setBounds(200, 70, 200, 500);
+
+        jButtonMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Foto4.jpg"))); // NOI18N
+        jButtonMenu4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMenu4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonMenu4);
+        jButtonMenu4.setBounds(600, 70, 200, 500);
 
         jMenuCadastros.setText("Cadastros");
 
@@ -251,6 +256,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         FormFilhos tela = new FormFilhos();
         tela.setVisible(true);
     }//GEN-LAST:event_jButtonMenu2ActionPerformed
+
+    private void jButtonMenu4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMenu4ActionPerformed
+        FormAcompanhaF tela = new FormAcompanhaF();
+        tela.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonMenu4ActionPerformed
   
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -288,13 +298,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton JButtonSair;
     private javax.swing.JButton jButtonMenu1;
     private javax.swing.JButton jButtonMenu2;
+    private javax.swing.JButton jButtonMenu4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabelFoto03;
-    private javax.swing.JLabel jLabelFoto04;
     private javax.swing.JLabel jLabelFoto05;
     private javax.swing.JButton jLogo2;
     private javax.swing.JMenuBar jMenuBar1;

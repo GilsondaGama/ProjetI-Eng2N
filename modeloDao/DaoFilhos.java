@@ -23,7 +23,7 @@ public class DaoFilhos {
         if(mod.getId() == 0) {
             sql = "INSERT INTO FILHO (nome, idMae, responsavel, endereco, complemento, bairro, cidade, estado, nascimento, sexo, contato1) values (?,?,?,?,?,?,?,?,?,?,?)";
         } else {
-//            sql = "UPDATE FILHO SET nome=?, endereco=?, complemento=?, bairro=?, cidade=?, estado=?, nascimento=?, cpf=?, rg=?, contato1=?, contato2=?, filhos=? WHERE id=?";                          
+            sql = "UPDATE FILHO SET nome=?, idMae=?, responsavel=?, endereco=?, complemento=?, bairro=?, cidade=?, estado=?, nascimento=?, sexo=?, contato1=? WHERE id=?";                          
         }
         try {            
             PreparedStatement pst = conex.con.prepareStatement(sql);

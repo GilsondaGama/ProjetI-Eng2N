@@ -589,7 +589,7 @@ public class FormFilhos extends javax.swing.JFrame {
         mod.setCidade(jTextFieldCidade.getText());
         mod.setEstado(jTextFieldEstado.getText());     
         mod.setNascimento(jDateChooserNascimento.getDate());                                  
-        mod.setSexo((String) jComboBoxSexo.getSelectedItem())        ;
+        mod.setSexo((String) jComboBoxSexo.getSelectedItem());
         mod.setContato1(jTextFieldContato1.getText());
            
         control.salvar(mod);
