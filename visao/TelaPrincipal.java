@@ -1,58 +1,92 @@
 package visao;
 
-import java.awt.AWTKeyStroke;
-import java.awt.KeyboardFocusManager;
-import java.awt.event.KeyEvent;
-import java.util.HashSet;
-import javax.swing.JPanel;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import modeloConection.ConexaoBD;
 
 public class TelaPrincipal extends javax.swing.JFrame {
     
     ConexaoBD conecta = new ConexaoBD();
     public TelaPrincipal() {
+        
         initComponents();
+        jButtonMenu1.addMouseListener(new MouseListener() {
+            public void mouseClicked(MouseEvent e) {}
+            public void mousePressed(MouseEvent e) {}
+            public void mouseReleased(MouseEvent e) {}
+            public void mouseEntered(MouseEvent e) {
+                jButtonMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Foto1.jpg")));        
+            }
+            public void mouseExited(MouseEvent e) {
+                jButtonMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Foto1_ON.jpg")));        
+            }
+        });
+        jButtonMenu2.addMouseListener(new MouseListener() {
+            public void mouseClicked(MouseEvent e) {}
+            public void mousePressed(MouseEvent e) {}
+            public void mouseReleased(MouseEvent e) {}
+            public void mouseEntered(MouseEvent e) {
+                jButtonMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Foto2.jpg")));        
+            }
+            public void mouseExited(MouseEvent e) {
+                jButtonMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Foto2_ON.jpg")));        
+            }
+        });        
+        jButtonMenu4.addMouseListener(new MouseListener() {
+            public void mouseClicked(MouseEvent e) {}
+            public void mousePressed(MouseEvent e) {}
+            public void mouseReleased(MouseEvent e) {}
+            public void mouseEntered(MouseEvent e) {
+                jButtonMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Foto4.jpg")));        
+            }
+            public void mouseExited(MouseEvent e) {
+                jButtonMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Foto4_ON.jpg")));        
+            }
+        });
+        jButtonMenu5.addMouseListener(new MouseListener() {
+            public void mouseClicked(MouseEvent e) {}
+            public void mousePressed(MouseEvent e) {}
+            public void mouseReleased(MouseEvent e) {}
+            public void mouseEntered(MouseEvent e) {
+                jButtonMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Foto5.jpg")));        
+            }
+            public void mouseExited(MouseEvent e) {
+                jButtonMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Foto5_ON.jpg")));        
+            }
+        });        
+        
+        
+        
         conecta.conexao();
     }
-
+ 
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabelFoto03 = new javax.swing.JLabel();
         jLogo2 = new javax.swing.JButton();
-        jLabelFoto05 = new javax.swing.JLabel();
         jButtonMenu1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         JButtonSair = new javax.swing.JButton();
         jButtonMenu2 = new javax.swing.JButton();
         jButtonMenu4 = new javax.swing.JButton();
+        jButtonMenu5 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuCadastros = new javax.swing.JMenu();
         jMenuItemCadMae = new javax.swing.JMenuItem();
         jMenuItemCadCri = new javax.swing.JMenuItem();
-        jMenuItemCadAte = new javax.swing.JMenuItem();
-        jMenuItemCadUsu = new javax.swing.JMenuItem();
         jMenuConsultas = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuRelatorios = new javax.swing.JMenu();
-        jMenuFerramentas = new javax.swing.JMenu();
-        jMenuItemBenVindo = new javax.swing.JMenuItem();
         jMenuSair = new javax.swing.JMenu();
         jMenuItemSair = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
-
-        jLabelFoto03.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Foto3.jpg"))); // NOI18N
-        getContentPane().add(jLabelFoto03);
-        jLabelFoto03.setBounds(400, 70, 200, 500);
 
         jLogo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Patoral Logo 2.png"))); // NOI18N
         jLogo2.setBorderPainted(false);
@@ -71,11 +105,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         getContentPane().add(jLogo2);
         jLogo2.setBounds(10, 10, 220, 30);
 
-        jLabelFoto05.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Foto5.jpg"))); // NOI18N
-        getContentPane().add(jLabelFoto05);
-        jLabelFoto05.setBounds(800, 70, 200, 500);
-
-        jButtonMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Foto1.jpg"))); // NOI18N
+        jButtonMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Foto1_ON.jpg"))); // NOI18N
         jButtonMenu1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonMenu1ActionPerformed(evt);
@@ -96,23 +126,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
         getContentPane().add(jLabel2);
         jLabel2.setBounds(200, 50, 200, 20);
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/txtMenu3.jpg"))); // NOI18N
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(400, 50, 200, 20);
-
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/txtMenu4.jpg"))); // NOI18N
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(600, 50, 200, 20);
+        jLabel4.setBounds(400, 50, 200, 20);
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/txtMenu5.jpg"))); // NOI18N
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(800, 50, 200, 20);
+        jLabel5.setBounds(600, 50, 200, 20);
 
         JButtonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/ExitMenor.png"))); // NOI18N
         JButtonSair.addActionListener(new java.awt.event.ActionListener() {
@@ -121,9 +145,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         getContentPane().add(JButtonSair);
-        JButtonSair.setBounds(950, 0, 40, 40);
+        JButtonSair.setBounds(750, 0, 40, 40);
 
-        jButtonMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Foto2.jpg"))); // NOI18N
+        jButtonMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Foto2_ON.jpg"))); // NOI18N
         jButtonMenu2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonMenu2ActionPerformed(evt);
@@ -132,14 +156,23 @@ public class TelaPrincipal extends javax.swing.JFrame {
         getContentPane().add(jButtonMenu2);
         jButtonMenu2.setBounds(200, 70, 200, 500);
 
-        jButtonMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Foto4.jpg"))); // NOI18N
+        jButtonMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Foto4_ON.jpg"))); // NOI18N
         jButtonMenu4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonMenu4ActionPerformed(evt);
             }
         });
         getContentPane().add(jButtonMenu4);
-        jButtonMenu4.setBounds(600, 70, 200, 500);
+        jButtonMenu4.setBounds(400, 70, 200, 500);
+
+        jButtonMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Foto5_ON.jpg"))); // NOI18N
+        jButtonMenu5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMenu5ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonMenu5);
+        jButtonMenu5.setBounds(600, 70, 200, 500);
 
         jMenuCadastros.setText("Cadastros");
 
@@ -159,43 +192,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jMenuCadastros.add(jMenuItemCadCri);
 
-        jMenuItemCadAte.setText("Gestantes");
-        jMenuCadastros.add(jMenuItemCadAte);
-
-        jMenuItemCadUsu.setText("Bebês");
-        jMenuItemCadUsu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemCadUsuActionPerformed(evt);
-            }
-        });
-        jMenuCadastros.add(jMenuItemCadUsu);
-
         jMenuBar1.add(jMenuCadastros);
 
         jMenuConsultas.setText("Acompanhamento");
 
-        jMenuItem1.setText("Mães");
-        jMenuConsultas.add(jMenuItem1);
-
-        jMenuItem2.setText("Bebês");
+        jMenuItem2.setText("Crianças");
         jMenuConsultas.add(jMenuItem2);
 
         jMenuBar1.add(jMenuConsultas);
 
-        jMenuRelatorios.setText("Consultas");
+        jMenuRelatorios.setText("Consultas e Relatórios");
         jMenuBar1.add(jMenuRelatorios);
-
-        jMenuFerramentas.setText("Relatórios");
-
-        jMenuItemBenVindo.setText("Ben-Vindo");
-        jMenuItemBenVindo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemBenVindoActionPerformed(evt);
-            }
-        });
-        jMenuFerramentas.add(jMenuItemBenVindo);
-
-        jMenuBar1.add(jMenuFerramentas);
 
         jMenuSair.setText("Sair");
 
@@ -211,7 +218,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar1);
 
-        setSize(new java.awt.Dimension(1016, 632));
+        setSize(new java.awt.Dimension(817, 632));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -228,16 +235,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         FormMaes tela = new FormMaes();
         tela.setVisible(true);
     }//GEN-LAST:event_jMenuItemCadMaeActionPerformed
-
-    private void jMenuItemCadUsuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCadUsuActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItemCadUsuActionPerformed
-
-    private void jMenuItemBenVindoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemBenVindoActionPerformed
-        TelaPrincipal tela = new TelaPrincipal();
-        tela.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jMenuItemBenVindoActionPerformed
 
     private void jLogo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLogo2ActionPerformed
         // TODO add your handling code here:
@@ -261,7 +258,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         FormAcompanhaF tela = new FormAcompanhaF();
         tela.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_jButtonMenu4ActionPerformed
+
+    private void jButtonMenu5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMenu5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonMenu5ActionPerformed
   
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -299,25 +301,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButtonMenu1;
     private javax.swing.JButton jButtonMenu2;
     private javax.swing.JButton jButtonMenu4;
+    private javax.swing.JButton jButtonMenu5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabelFoto03;
-    private javax.swing.JLabel jLabelFoto05;
     private javax.swing.JButton jLogo2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuCadastros;
     private javax.swing.JMenu jMenuConsultas;
-    private javax.swing.JMenu jMenuFerramentas;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItemBenVindo;
-    private javax.swing.JMenuItem jMenuItemCadAte;
     private javax.swing.JMenuItem jMenuItemCadCri;
     private javax.swing.JMenuItem jMenuItemCadMae;
-    private javax.swing.JMenuItem jMenuItemCadUsu;
     private javax.swing.JMenuItem jMenuItemSair;
     private javax.swing.JMenu jMenuRelatorios;
     private javax.swing.JMenu jMenuSair;

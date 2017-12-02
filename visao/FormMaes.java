@@ -498,7 +498,7 @@ public class FormMaes extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(1200, 571));
+        setSize(new java.awt.Dimension(1200, 561));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
     
